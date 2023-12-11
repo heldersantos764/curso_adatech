@@ -8,10 +8,21 @@
     --primary-color: #261a3c;
     --primary-color-gradient: radial-gradient(circle, rgba(38,26,60,1) 0%, rgba(50,38,70,1) 0%);
     --secondary-color: rgb(125, 85, 199);
+    --light-color: rgb(215, 205, 233);
 }
 
 .bg-primary{
     background-color: var(--primary-color) !important;
+}
+
+.home{
+    z-index: 1;
+    top: 0;
+    left: 0;
+    margin-top: 0;
+    margin-left: 0;
+    position: fixed;
+    width: 100%;
 }
 
 .btn-menu{
@@ -32,8 +43,12 @@
     border: 1px solid var(--secondary-color);
 }
 
+.btn-menu span{
+    font-size: 12px;
+}
+
 .btn-menu:hover{
-    border: 1px solid rgb(159, 124, 223);
+    border: 2px solid rgb(159, 124, 223);
     -webkit-box-shadow: 10px 10px 8px -8px rgba(10,5,20,1);
     -moz-box-shadow: 10px 10px 8px -8px rgba(10,5,20,1);
     box-shadow: 10px 10px 8px -8px rgba(10,5,20,1);
@@ -49,4 +64,32 @@
 
 .logo img{
     width: 200px;
+}
+
+.page{
+    background-color: var(--light-color);
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    margin-top: 0;
+    height: 100vh;
+    width: 100%;
+    transition: all .5s;
+}
+
+.page.hidden{
+    left: 100%;
+}
+
+.page .header{
+    background-color: var(--primary-color);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.page .header button{
+    color: #fff !important;
+    font-size: 25px;
 }
