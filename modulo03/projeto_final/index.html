@@ -65,8 +65,8 @@
                             <div class="mb-3 row">
                                 <label for="" class=" col-form-label col-sm-3">Data de Nascimento</label>
                                 <div class="col-sm-9">
-                                    <input name="dataNascimento" type="text"
-                                        class="form-control data-nascimento" placeholder="__/__/____">
+                                    <input name="dataNascimento" type="text" class="form-control data-nascimento"
+                                        placeholder="__/__/____">
                                 </div>
                             </div>
 
@@ -131,7 +131,82 @@
                         </div>
                         <div class="modal-footer">
                             <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="submit" class="btn btn-primary">Entrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal área do usuário -->
+        <div class="modal fade" id="area-usuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="titulo-area-usuario" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen-xxl-down">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <img src="./assets/images/icon.png" alt="" style="height: 50px;">
+                        <h1 class="modal-title fs-5 text-light" id="titulo-area-usuario">Bem vindo, Helder dos Santos
+                        </h1>
+                        <button type="button" class="btn btn-danger btn-sair" data-bs-dismiss="modal"
+                            aria-label="Close">Sair</button>
+                    </div>
+                    <div class="modal-body container-fluid">
+                        <div class="row conteudo">
+                            <div class="col col-2 bg-secondary menu py-3">
+                                <div class="saldo bg-dark p-3">
+                                    <span>Saldo (Poupança)</span>
+                                    <div>R$ 2.000,00</div>
+                                    <i>Conta: 1 - Agência: 0001</i>
+                                </div>
+                                <div class="links-menu">
+                                    <div class="item-menu">
+                                        <a href="#" class="d-flex align-items-center gap-2 link-menu-usuario"
+                                            id-modal="modal-depositar"><i class="bi bi-arrow-up-circle-fill fs-3"></i>
+                                            Depositar</a>
+                                    </div>
+                                    <div class="item-menu">
+                                        <a href="#" class="d-flex align-items-center gap-2 link-menu-usuario"
+                                            id-modal="modal-sacar"><i class="bi bi-arrow-down-circle-fill fs-3"></i>
+                                            Sacar</a>
+                                    </div>
+                                    <div class="item-menu">
+                                        <a href="#" class="d-flex align-items-center gap-2 link-menu-usuario"
+                                            id-modal="modal-tranferir"><i class="bi bi-currency-dollar fs-3"></i>
+                                            Transferir</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="main col col-10 py-3 d-flex flex-column align-items-center justify-content-center">
+                                <img src="./assets/images/logo.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal depositar -->
+        <div class="modal fade" id="modal-depositar" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content modal-personalizada">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Depositar</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+
+                            <div class="mb-3">
+                                <label class="col-form-label">Valor do deposito</label>
+                                <input name="valor" type="text" class="form-control" onInput="mascaraMoeda(event);" value="R$ 0,00">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Depositar</button>
                         </div>
                     </form>
                 </div>
@@ -144,8 +219,11 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/imask"></script>
+
+
     <script type="module" src="./assets/js/main.js"></script>
     <script src="./assets/js/mascaras.js"></script>
+
 </body>
 
 </html>

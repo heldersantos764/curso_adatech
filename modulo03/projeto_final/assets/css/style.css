@@ -15,6 +15,10 @@
     background-color: var(--primary-color) !important;
 }
 
+.bg-secondary{
+    background-color: var(--secondary-color) !important;
+}
+
 .btn-menu{
     background-color: var(--secondary-color);
     padding: 20px;
@@ -71,4 +75,75 @@
 .page .header button{
     color: #fff !important;
     font-size: 25px;
+}
+
+.btn-sair{
+    border: none;
+}
+
+.modal .conteudo{
+    height: 100%;
+}
+
+.modal .menu{
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    color: var(--light-color);
+}
+
+.modal .saldo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.modal .saldo span{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.modal .saldo div{
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.modal .saldo i{
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.modal .main{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+}
+
+.links-menu{
+    margin-top: 102px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+.links-menu a{
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: 300;
+    letter-spacing: .05em;
+    transition: all .3s;
+}
+
+.links-menu a:hover{
+    background-color: var(--primary-color);
+}
+
+.modal-personalizada{
+    background-color: var(--light-color);
+    box-shadow: 2px 2px 10px rgba(0,0,0,.7);
 }

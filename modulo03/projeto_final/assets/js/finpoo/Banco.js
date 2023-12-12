@@ -14,7 +14,7 @@ class Banco {
         for (let i = 0; i < this.#contas.length; i++) {
             if (
                 this.#contas[i].getCliente().getCpf() === cpf &&
-                this.#contas[i].getCliente().getSenha() === senha
+                this.#contas[i].getCliente().conferirSenha(senha)
             ) {
                 this.#idClienteLogado = i
 
@@ -52,6 +52,10 @@ class Banco {
     criarNumeroDeConta() {
         this.#ultimaContaCriada++
         return this.#ultimaContaCriada
+    }
+
+    depositar(senha, valor){
+        const cliente = this.#contas[this.#idClienteLogado]
     }
 }
 
