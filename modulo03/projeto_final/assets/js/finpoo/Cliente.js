@@ -8,7 +8,7 @@ class Cliente{
         this.#nome = ""
         this.#cpf = ""
         this.#dataDeNascimento = ""
-        this.senha = ""
+        this.#senha = ""
     }
 
     getNome(){
@@ -24,7 +24,7 @@ class Cliente{
     }
 
     setCpf(cpf){
-        this.cpf = cpf
+        this.#cpf = cpf
     }
 
     getDataDeNascimento(){
@@ -36,7 +36,7 @@ class Cliente{
     }
 
     setSenha(senha){
-        this.senha = senha
+        this.#senha = senha
     }
 
     conferirSenha(senha){

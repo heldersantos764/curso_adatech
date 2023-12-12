@@ -48,16 +48,29 @@ class Validacoes {
 
     static isDataDeNascimento(data) {
         const regraRegex = /^\d{2}\/\d{2}\/\d{4}$/;
-        const dataValida =  regraRegex.test(data);
+        const dataValida = regraRegex.test(data);
 
         if (!dataValida) {
             return false
         }
 
-        const dataDeNascimento = new Date(data);
+        const partesData = data.split('/');
+        const dia = parseInt(partesData[0], 10);
+        const mes = parseInt(partesData[1], 10);
+        const ano = parseInt(partesData[2], 10);
+
+        const dataDeNascimento = new Date(ano, mes - 1, dia);
         const dataAtual = new Date();
         const diferencaAnos = dataAtual.getFullYear() - dataDeNascimento.getFullYear();
         return diferencaAnos >= 18;
+    }
+
+    static tamanhoMinimo(tamanho, texto) {
+        return texto.length >= tamanho
+    }
+
+    static comprarStrings(texto1, texto2) {
+        return texto1 === texto2
     }
 }
 

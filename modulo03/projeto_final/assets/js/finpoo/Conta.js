@@ -6,9 +6,13 @@ class Conta{
 
     constructor(){
         this.#cliente = ''
-        this.#agencia = ''
+        this.#agencia = '0001'
         this.#conta = ''
         this.#saldo = 0
+    }
+
+    setConta(conta){
+        this.#conta = conta
     }
 
     getCliente(){
