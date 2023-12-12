@@ -1,35 +1,55 @@
-class Banco{
+class Banco {
 
-    #clienteLogado
+    #idClienteLogado
     #contas
-    #temUsuarioLogado
     #ultimaContaCriada
 
-    constructor(){
-        this.#clienteLogado = null
+    constructor() {
+        this.#idClienteLogado = null
         this.#contas = []
-        this.#temUsuarioLogado = false
         this.#ultimaContaCriada = 0
     }
 
-    logar(cliente){
+    logar(cpf, senha) {
+        for (let i = 0; i < this.#contas.length; i++) {
+            if (
+                this.#contas[i].getCliente().getCpf() === cpf &&
+                this.#contas[i].getCliente().getSenha() === senha
+            ) {
+                this.#idClienteLogado = i
 
+                return true
+            }
+        }
+        return false;
     }
 
-    sair(){
-        this.#clienteLogado = null
-        this.#temUsuarioLogado = false
+    sair() {
+        this.#idClienteLogado = null
     }
 
-    addConta(conta){
-        this.#contas.push(conta)
+    addConta(conta) {
+        if (this.#buscarContaPorCpf(conta.getCliente().getCpf()) === null) {
+            this.#contas.push(conta)
+            return true
+        }
+        return false;
     }
 
-    getConta(){
-        return this.#contas
+    #buscarContaPorCpf(cpf) {
+        for (let i = 0; i < this.#contas.length; i++) {
+            if (this.#contas[i].getCliente().getCpf() === cpf) {
+                return this.#contas[i];
+            }
+        }
+        return null;
     }
 
-    criarNumeroDeConta(){
+    getConta() {
+        return this.#contas[this.#idClienteLogado]
+    }
+
+    criarNumeroDeConta() {
         this.#ultimaContaCriada++
         return this.#ultimaContaCriada
     }

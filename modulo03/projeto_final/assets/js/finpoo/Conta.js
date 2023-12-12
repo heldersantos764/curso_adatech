@@ -20,7 +20,7 @@ class Conta{
     }
 
     setCliente(cliente){
-        this.cliente = cliente
+        this.#cliente = cliente
     }
 
     getAgencia(){
