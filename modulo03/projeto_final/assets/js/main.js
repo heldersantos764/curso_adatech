@@ -231,7 +231,7 @@ formTransferir.addEventListener('submit', e => {
         });
     }
 
-    formSacar.reset()
+    formTransferir.reset()
 })
 
 for (const item of botoesMenuUsuario) {
