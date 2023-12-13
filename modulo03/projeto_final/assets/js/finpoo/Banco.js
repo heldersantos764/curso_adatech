@@ -61,7 +61,7 @@ class Banco {
     depositar(valor) {
         const valorConvertido = this.#converterParaFloat(valor)
 
-        if (!isNaN(valorConvertido)) {
+        if (!isNaN(valorConvertido) && valorConvertido > 0) {
             this.#contas[this.#idClienteLogado].depositar(valorConvertido)
             return true
         }
@@ -74,23 +74,34 @@ class Banco {
         const cliente = this.#contas[this.#idClienteLogado].getCliente()
         const valorConvertido = this.#converterParaFloat(valor)
 
-        if (!isNaN(valorConvertido) && cliente.conferirSenha(senha)) {
+        if (
+            !isNaN(valorConvertido) &&
+            cliente.conferirSenha(senha) &&
+            valorConvertido > 0
+        ) {
             return this.#contas[this.#idClienteLogado].sacar(valorConvertido)
         }
 
         return false
     }
 
-    transferir(valor, agencia, conta, senha){
+    transferir(valor, agencia, conta, senha) {
         const contaOrigem = this.#contas[this.#idClienteLogado]
         const valorConvertido = this.#converterParaFloat(valor)
 
-        if(parseInt(conta) === contaOrigem.getConta() || !contaOrigem.getCliente().conferirSenha(senha)){
+        if (
+            parseInt(conta) === contaOrigem.getConta() ||
+            !contaOrigem.getCliente().conferirSenha(senha)
+        ) {
             return false
         }
 
         for (let i = 0; i < this.#contas.length; i++) {
-            if (this.#contas[i].getConta() === parseInt(conta) && this.#contas[i].getAgencia() === agencia) {
+            if (
+                this.#contas[i].getConta() === parseInt(conta) &&
+                this.#contas[i].getAgencia() === agencia &&
+                valorConvertido > 0
+            ) {
 
                 this.#contas[this.#idClienteLogado].sacar(valorConvertido)
                 this.#contas[i].depositar(valorConvertido)

@@ -171,8 +171,8 @@ formDepositar.addEventListener('submit', e => {
     } else {
         Swal.fire({
             title: "Atenção",
-            html: `<div>Erro ao realizar saque<div> <strong class="text-success">Agencia: ${agencia} - Conta: ${numeroConta}</strong>`,
-            icon: "success",
+            html: `Não foi possível realizar o deposito, verifique o valor informado.`,
+            icon: "error",
             allowOutsideClick: false
         });
     }
