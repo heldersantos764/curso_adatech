@@ -9,10 +9,6 @@ class ContaCorrente extends Conta {
         this.#limite = 500
     }
 
-    depositar(valor) {
-        return super.depositar(valor)
-    }
-
     sacar(valor) {
         const saldoTotal = super.getSaldo()+this.#limite
         

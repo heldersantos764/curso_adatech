@@ -54,7 +54,7 @@ class Banco {
         return this.#ultimaContaCriada
     }
 
-    #converterParaFloat(valor){
+    #converterParaFloat(valor) {
         return parseFloat(valor.slice(3).replace('.', '').replace(',', '.'));
     }
 
@@ -69,10 +69,12 @@ class Banco {
         return false
     }
 
-    sacar(valor){
+    sacar(valor, senha) {
+
+        const cliente = this.#contas[this.#idClienteLogado].getCliente()
         const valorConvertido = this.#converterParaFloat(valor)
 
-        if (!isNaN(valorConvertido)) {
+        if (!isNaN(valorConvertido) && cliente.conferirSenha(senha)) {
             return this.#contas[this.#idClienteLogado].sacar(valorConvertido)
         }
 

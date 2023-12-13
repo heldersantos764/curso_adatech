@@ -171,7 +171,7 @@
                                     </div>
                                     <div class="item-menu">
                                         <a href="#" class="d-flex align-items-center gap-2 link-menu-usuario"
-                                            id-modal="modal-tranferir"><i class="bi bi-currency-dollar fs-3"></i>
+                                            id-modal="modal-transferir"><i class="bi bi-currency-dollar fs-3"></i>
                                             Transferir</a>
                                     </div>
                                 </div>
@@ -188,12 +188,12 @@
 
 
         <!-- Modal depositar -->
-        <div class="modal fade" id="modal-depositar" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="modal-depositar" tabindex="-1" aria-labelledby="titulo-depositar"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content modal-personalizada">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Depositar</h1>
+                        <h1 class="modal-title fs-5" id="titulo-depositar">Depositar</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form id="form-deposito">
@@ -201,12 +201,83 @@
 
                             <div class="mb-3">
                                 <label class="col-form-label">Valor do deposito</label>
-                                <input name="valor" type="text" class="form-control" onInput="mascaraMoeda(event);" value="R$ 0,00">
+                                <input name="valor" type="text" class="form-control" onInput="mascaraMoeda(event);"
+                                    value="R$ 0,00">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Depositar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal sacar -->
+        <div class="modal fade" id="modal-sacar" tabindex="-1" aria-labelledby="titulo-sacar" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content modal-personalizada">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="titulo-sacar">Sacar</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form id="form-sacar">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="col-form-label">Valor do saque</label>
+                                <input name="valor" type="text" class="form-control" onInput="mascaraMoeda(event);"
+                                    value="R$ 0,00">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label">Senha de Acesso</label>
+                                <input name="senha" type="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Sacar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+         <!-- Modal transferir -->
+         <div class="modal fade" id="modal-transferir" tabindex="-1" aria-labelledby="titulo-transferir" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content modal-personalizada">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="titulo-transferir">Transferir</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form id="form-transferir">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="col-form-label">Valor da transferência</label>
+                                <input name="valor" type="text" class="form-control" onInput="mascaraMoeda(event);"
+                                    value="R$ 0,00">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="col-form-label">Agência de destino</label>
+                                <input name="agencia" type="text" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="col-form-label">Conta de Destino</label>
+                                <input name="conta" type="text" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="col-form-label">Senha de Acesso</label>
+                                <input name="senha" type="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Transferir</button>
                         </div>
                     </form>
                 </div>

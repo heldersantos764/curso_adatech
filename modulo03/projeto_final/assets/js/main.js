@@ -7,6 +7,8 @@ import ContaPoupanca from "./finpoo/ContaPoupanca.js"
 const formCadastro = document.querySelector('#form-cadastro')
 const formLogin = document.querySelector('#form-login')
 const formDepositar = document.querySelector('#form-deposito')
+const formSacar = document.querySelector("#form-sacar")
+
 const botoesMenuUsuario = document.getElementsByClassName('link-menu-usuario')
 const banco = new Banco()
 
@@ -147,6 +149,8 @@ formLogin.addEventListener('submit', e => {
         });
     }
 
+    formLogin.reset()
+
 })
 
 formDepositar.addEventListener('submit', e => {
@@ -167,10 +171,40 @@ formDepositar.addEventListener('submit', e => {
     } else {
         Swal.fire({
             title: "Atenção",
-            text: "Erro ao realizar deposito.",
-            icon: "error"
+            html: `<div>Erro ao realizar saque<div> <strong class="text-success">Agencia: ${agencia} - Conta: ${numeroConta}</strong>`,
+            icon: "success",
+            allowOutsideClick: false
         });
     }
+
+    formDepositar.reset()
+})
+
+formSacar.addEventListener('submit', e => {
+    e.preventDefault()
+
+    const dados = getDataFormulario(formSacar)
+
+    const sacou = banco.sacar(dados.valor, dados.senha)
+
+    renderPaginaUser()
+
+    if (sacou) {
+        Swal.fire({
+            title: "Atenção",
+            text: "Saque Realizado com sucesso.",
+            icon: "success"
+        });
+    } else {
+        Swal.fire({
+            title: "Atenção",
+            html: `<div>Erro ao realizar saque<div> <strong class="text-danger">Confira saldo e senha de acesso</strong>`,
+            icon: "error",
+            allowOutsideClick: false
+        });
+    }
+
+    formSacar.reset()
 })
 
 for (const item of botoesMenuUsuario) {
