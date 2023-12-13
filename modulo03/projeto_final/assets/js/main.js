@@ -234,6 +234,7 @@ formTransferir.addEventListener('submit', e => {
     formTransferir.reset()
 })
 
+//adiciona os aventos nos botões do menu da página de usuario
 for (const item of botoesMenuUsuario) {
     item.addEventListener('click', e => {
         e.preventDefault()
