@@ -80,6 +80,27 @@ class Banco {
 
         return false
     }
+
+    transferir(valor, agencia, conta, senha){
+        const contaOrigem = this.#contas[this.#idClienteLogado]
+        const valorConvertido = this.#converterParaFloat(valor)
+
+        if(parseInt(conta) === contaOrigem.getConta() || !contaOrigem.getCliente().conferirSenha(senha)){
+            return false
+        }
+
+        for (let i = 0; i < this.#contas.length; i++) {
+            if (this.#contas[i].getConta() === parseInt(conta) && this.#contas[i].getAgencia() === agencia) {
+
+                this.#contas[this.#idClienteLogado].sacar(valorConvertido)
+                this.#contas[i].depositar(valorConvertido)
+
+                return true;
+            }
+        }
+
+        return false
+    }
 }
 
 export default Banco

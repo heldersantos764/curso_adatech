@@ -1,19 +1,14 @@
 class Validacoes {
     static isCPF(cpf) {
-        // Remover caracteres não numéricos
         cpf = cpf.replace(/[^\d]/g, '');
-
-        // Verificar se o CPF possui 11 dígitos
         if (cpf.length !== 11) {
             return false;
         }
 
-        // Verificar se todos os dígitos são iguais (caso contrário, não seria um CPF válido)
         if (/^(\d)\1+$/.test(cpf)) {
             return false;
         }
 
-        // Calcular e verificar os dígitos verificadores
         let soma = 0;
         for (let i = 0; i < 9; i++) {
             soma += parseInt(cpf.charAt(i)) * (10 - i);
@@ -69,7 +64,7 @@ class Validacoes {
         return texto.length >= tamanho
     }
 
-    static comprarStrings(texto1, texto2) {
+    static compararStrings(texto1, texto2) {
         return texto1 === texto2
     }
 }

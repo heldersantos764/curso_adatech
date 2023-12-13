@@ -8,11 +8,11 @@ const formCadastro = document.querySelector('#form-cadastro')
 const formLogin = document.querySelector('#form-login')
 const formDepositar = document.querySelector('#form-deposito')
 const formSacar = document.querySelector("#form-sacar")
+const formTransferir = document.querySelector('#form-transferir')
 
 const botoesMenuUsuario = document.getElementsByClassName('link-menu-usuario')
+
 const banco = new Banco()
-
-
 
 const validarCadastro = (dados) => {
     let mensagemErro = null;
@@ -25,7 +25,7 @@ const validarCadastro = (dados) => {
         mensagemErro = "Data de Nascimento inválida ou pessoa menor de idade"
     } else if (!Validacoes.tamanhoMinimo(8, dados.senha)) {
         mensagemErro = "A senha deve conter no mínimo 8 caracteres"
-    } else if (!Validacoes.comprarStrings(dados.senha, dados.confirmarSenha)) {
+    } else if (!Validacoes.compararStrings(dados.senha, dados.confirmarSenha)) {
         mensagemErro = "Senha informada não conferem"
     }
 
@@ -199,6 +199,33 @@ formSacar.addEventListener('submit', e => {
         Swal.fire({
             title: "Atenção",
             html: `<div>Erro ao realizar saque<div> <strong class="text-danger">Confira saldo e senha de acesso</strong>`,
+            icon: "error",
+            allowOutsideClick: false
+        });
+    }
+
+    formSacar.reset()
+})
+
+formTransferir.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const dados = getDataFormulario(formTransferir)
+
+    const transferiu = banco.transferir(dados.valor, dados.agencia, dados.conta, dados.senha)
+
+    renderPaginaUser()
+
+    if (transferiu) {
+        Swal.fire({
+            title: "Atenção",
+            text: "Transferência Realizada com sucesso.",
+            icon: "success"
+        });
+    } else {
+        Swal.fire({
+            title: "Atenção",
+            html: `<div>Erro ao realizar tranferência<div> <strong class="text-danger">Confira saldo, dados da conta e senha de acesso</strong>`,
             icon: "error",
             allowOutsideClick: false
         });
