@@ -54,8 +54,29 @@ class Banco {
         return this.#ultimaContaCriada
     }
 
-    depositar(senha, valor){
-        const cliente = this.#contas[this.#idClienteLogado]
+    #converterParaFloat(valor){
+        return parseFloat(valor.slice(3).replace('.', '').replace(',', '.'));
+    }
+
+    depositar(valor) {
+        const valorConvertido = this.#converterParaFloat(valor)
+
+        if (!isNaN(valorConvertido)) {
+            this.#contas[this.#idClienteLogado].depositar(valorConvertido)
+            return true
+        }
+
+        return false
+    }
+
+    sacar(valor){
+        const valorConvertido = this.#converterParaFloat(valor)
+
+        if (!isNaN(valorConvertido)) {
+            return this.#contas[this.#idClienteLogado].sacar(valorConvertido)
+        }
+
+        return false
     }
 }
 

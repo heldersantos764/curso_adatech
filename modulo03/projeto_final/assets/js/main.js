@@ -6,6 +6,7 @@ import ContaPoupanca from "./finpoo/ContaPoupanca.js"
 
 const formCadastro = document.querySelector('#form-cadastro')
 const formLogin = document.querySelector('#form-login')
+const formDepositar = document.querySelector('#form-deposito')
 const botoesMenuUsuario = document.getElementsByClassName('link-menu-usuario')
 const banco = new Banco()
 
@@ -54,6 +55,20 @@ const getDataFormulario = (form) => {
 function abrirModal(id) {
     var modal = new bootstrap.Modal(document.getElementById(id));
     modal.show();
+}
+
+function renderPaginaUser() {
+    const contaLogada = banco.getConta();
+    const saldo = contaLogada.getSaldo()
+    const saldoFormatado = saldo.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+    });
+
+    document.querySelector('.saldo div').innerHTML = saldoFormatado
+    document.querySelector('.saldo span').innerHTML = contaLogada instanceof ContaCorrente ? "Saldo (Conta Corrente)" : "Saldo (Conta Poupança)"
+    document.querySelector('.saldo i').innerHTML = `Conta: ${contaLogada.getConta()} - Agência: ${contaLogada.getAgencia()}`
+    document.querySelector('#titulo-area-usuario').innerHTML = `Bem vindo(a), ${contaLogada.getCliente().getNome()}`
 }
 
 
@@ -123,6 +138,7 @@ formLogin.addEventListener('submit', e => {
 
     if (loginEfetuado) {
         abrirModal('area-usuario')
+        renderPaginaUser()
     } else {
         Swal.fire({
             title: "Atenção",
@@ -133,9 +149,31 @@ formLogin.addEventListener('submit', e => {
 
 })
 
-abrirModal('area-usuario')
+formDepositar.addEventListener('submit', e => {
+    e.preventDefault()
 
-for(const item of botoesMenuUsuario){
+    const dados = getDataFormulario(formDepositar)
+
+    const depositou = banco.depositar(dados.valor)
+
+    renderPaginaUser()
+
+    if (depositou) {
+        Swal.fire({
+            title: "Atenção",
+            text: "Deposito Realizado com sucesso.",
+            icon: "success"
+        });
+    } else {
+        Swal.fire({
+            title: "Atenção",
+            text: "Erro ao realizar deposito.",
+            icon: "error"
+        });
+    }
+})
+
+for (const item of botoesMenuUsuario) {
     item.addEventListener('click', e => {
         e.preventDefault()
         const idModal = e.target.getAttribute('id-modal')
